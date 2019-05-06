@@ -1,0 +1,26 @@
+﻿
+
+
+
+
+    <div class=" container-fluid  text-center mx-auto WaiterTableEntry-img" id="rcorners2" style="padding-bottom:200px; max-width: 540px; margin-top: 50px;">
+        <h3 class="pb-4 display-4 text-white" style="font-size:38px;">How many tables do you have?</h3>
+        
+                <div class="mx-auto" style="max-width: 200px;">
+                    <form method="post">
+                        <select class="custom-select" name="dropTable" onchange="this.form.submit()">
+
+                            <option></option>
+                            @for (int i = 1; i <= 20; i++)
+                            {
+                                <option class="dropdown-item text-center">@i</option>
+                            }
+
+                        </select>
+
+                    </form>
+                </div>
+
+    </div>
+
+

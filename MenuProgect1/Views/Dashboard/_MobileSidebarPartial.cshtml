@@ -1,0 +1,20 @@
+﻿
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+
+    <button onclick="w3_close()" class="list-group-item list-group-item-action bg-white text-secondary" style="padding-left: 170px">&times;</button>
+    <a asp-controller="Dashboard" onclick="w3_close()" asp-action="HomeDashboard" class="list-group-item list-group-item-action p-2 shadow border text-white text-center bg-dark" style="font-size: 14px;"><i class="fas fa-home"></i> Dash</a>
+    <h5 class="text-center bg-secondary text-white rounded-top lead" style="margin-bottom: -1px;">Employees</h5>
+    <a asp-controller="Dashboard" class="list-group-item list-group-item-action bg-light rounded-bottom" asp-action="AddEmployees" asp-route-id=""><img src="~/Images/plus.svg" style="max-width: 20px; padding-right: 5px;" onclick="w3_close()" /> ADD</a>
+    <a asp-controller="Home" class="list-group-item list-group-item-action border mt-3 rounded-top" onclick="w3_close()" asp-action="MenuFoodEntry" asp-route-id=""> Edit Menu</a>
+   <a asp-controller="Home" class="list-group-item list-group-item-action border rounded-bottom" onclick="w3_close()" asp-action="MenuTableEntry" asp-route-id=""> Edit Tables</a>
+
+    
+
+</div>
+<button class="w3-button bg-light w3-xlarge d-block d-sm-none d-none d-sm-block d-md-none border" onclick="w3_open()">☰</button>
+
+

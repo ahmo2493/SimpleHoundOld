@@ -1,0 +1,12 @@
+﻿
+
+
+<div class="list-group">
+
+    <a asp-controller="Dashboard" class=" p-2  shadow text-white bg-dark ml-1 btn" asp-action="HomeDashboard" style="font-size: 15px;"><i class="fas fa-home"></i> Dash</a>
+    <h5 class="text-center bg-secondary text-white rounded-top lead" style="margin-bottom: -1px;">Employees</h5>
+    <a asp-controller="Dashboard" class="list-group-item list-group-item-action bg-light rounded-bottom" asp-action="AddEmployees" asp-route-id=""><img src="~/Images/plus.svg" style="max-width: 20px; padding-right: 5px;" /> Add Staff</a>
+    <a asp-controller="Home" class="list-group-item list-group-item-action mt-3 rounded-top" asp-action="MenuFoodEntry" asp-route-id=""> Edit Menu</a>
+    <a class="list-group-item list-group-item-action rounded-bottom" data-toggle="popover" title="Upgrade" data-content="Become a gold member and unlock table editing"> Edit Tables</a>
+
+</div>

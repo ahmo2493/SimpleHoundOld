@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "WaiterTableEntry";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+    <p class="text-center">Hello @ViewData["name"]!</p>
+    <p class="text-center" style="color: #00bd8e;">@ViewData["OrderSentMessage"]</p>
+
+<div class=" container-fluid  text-center mx-auto WaiterTableEntry-img" id="rcorners2" style="padding-bottom:200px;">
+
+    <h1 class="display-4 text-white pb-5">Select a Table</h1>
+
+    <div class="mx-auto" style="max-width: 200px;">
+        <form method="post">
+            <select class="custom-select" data-style="btn-success" name="tableSelected" onchange="this.form.submit()">
+                <option title="hello"></option>
+                @for (int i = 1; i <= (int)ViewData["table"]; i++)
+                {
+
+                    <option class="dropdown-item text-center" title="dropdown" style="font-size: 21px;">@i</option>
+                }
+            </select>
+        </form>
+    </div>
+</div>
+<p style="padding-top:300px">You got this, just smile!</p>
+
+

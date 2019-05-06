@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Oasis";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12 text-center" style="padding-bottom: 55px;">
+
+        <h1 class="display-4 text-success">Oasis</h1>
+        <p class="lead" style="font-size: 20px;">Have Fun!</p>
+
+
+        <div class="mx-auto GreenLogin-img">
+
+
+            <div class=" mx-auto GreenInputBox">
+                <span class="text-danger"> @ViewData["Error"]</span>
+                <form method="post">
+                    <input type="password" class="form-control" value="" name="OasisPassword" placeholder="Employee1234" aria-label="Username" aria-describedby="basic-addon1" >
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+

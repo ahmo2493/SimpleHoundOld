@@ -1,0 +1,113 @@
+﻿@*@model List<MenuProgect1.SQLDatabase.MenuEntry>*@
+
+@model MenuProgect1.MyLists.FoodLists
+
+
+
+<div class="row FoodColor">
+    <div class="col text-left text-md-center"><a href="/Home/MenuTableEntry" role="button" class="btn btn-lg text-white font-weight-bold " style="background-color:#00ff90;">&lt;Back</a></div>
+
+
+    <div class="col-sm-12 col-md-8 text-center pt-2">
+        <h3 class="p-1">Input each of the food items to your virtual menu</h3>
+        <p class="pb-3 text-white" >Food Category | Food Item | Item Price</p>
+    </div>
+    <div class="col"></div>
+</div>
+
+
+<div class="mx-auto text-center pt-5 ">
+
+    <form method="post">
+        <div class="text-danger mx-auto">@ViewData["categoryError"]</div>
+
+        <div class="text-center mx-auto p-2 pb-3" style="max-width: 380px;">
+
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Category</span>
+                </div>
+
+                <input type="text" class="form-control" value="" name="EntryBoxCategory" placeholder="seafood" aria-label="Username" aria-describedby="basic-addon1">
+
+            </div>
+            <button type="submit" name="addCategory" value="addInfo" class="btn bg-light text-center" style="border-color:#00bd8e">+Add</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+<div class=" p-3 bg-light shadow m-2 mx-auto mt-5 clearfix" style="max-width: 850px; border-radius: 25px; padding-bottom: 40px;">
+
+    <div class="text-danger mx-auto text-center">@ViewData["foodItemError"]</div>
+    @for (int i = 0; i < Model.CategoryList.Count; i++)
+    {
+        <form method="post">
+            <div class="mx-auto border p-3 mb-4" style="max-width: 500px; border-radius: 25px; border: #00ff90;">
+
+                <h5 class="rounded pl-3"> @Model.CategoryList[i] <button type="submit" name="deleteCategory" value="@i" class="btn btn-sm bg-light float-right" style="position: relative; bottom: 7px; left: 7px;">X</button> </h5>
+                <hr class="my-4">
+
+
+                @for (int p = 0; p < Model.FoodItemList.Count; p++)
+                {
+                    if (Model.CategoryList[i] == Model.FoodItemList[p].Categories)
+                    {
+                        //Food item and price
+                        <p><button type="submit" name="deleteFoodItem" value="@p" class="rounded-circle btn btn-sm border bg-light">X</button> @Model.FoodItemList[p].Items -------- @Model.FoodItemList[p].Prices </p>
+                    }
+
+                }
+
+                @*------------------------------------------ Add Food Items and Prices (input box) ------------------------------------------------------*@
+
+
+
+
+                <div class="input-group mb-3 " style="max-width: 450px;">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Item</span>
+                    </div>
+                    @*-------------------- type="hidden", is used to add Category item to foodList  ------------------------*@
+
+                    <input type="text" class="form-control" value="" name="EntryBoxItem" placeholder="@Model.CategoryList[i] item" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="hidden" class="form-control" value="@Model.CategoryList[i]" name="CategoryItem" aria-label="Username" aria-describedby="basic-addon1">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="text" class="form-control mr-2" value="" name="EntryBoxPrice" placeholder="" aria-label="Username" aria-describedby="basic-addon1" style="max-width: 85px;">
+
+                    <button type="submit" name="addFoodItem" value="addInfo" class="btn bg-light text-center" style="border-color:#00bd8e">+Add</button>
+                </div>
+            </div>
+
+        </form>
+    }
+        <div class="text-danger mx-auto text-center">@ViewData["ErrorNext"]</div>
+    
+    <form method="post">
+        <input class="btn bg-light float-right mt-5" name="SubmitMenu" href="Home/Dashboard" type="submit" value="Next" style="border-color: #00D377; width: 100px; border-radius: 25px;" />
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

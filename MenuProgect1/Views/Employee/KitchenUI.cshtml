@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "KitchenUI";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+<meta http-equiv="refresh" content="7" />
+
+
+
+<div class="container">
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <form method="post">
+            <div class="border rounded mb-2 bg-white shadow ">
+                <div class="row pl-4 pr-2 pt-2">
+
+                    <div class=" col-12 col-md-7">
+                        <div class=" bg-light rounded pl-2" style="white-space:nowrap; overflow: hidden; text-overflow:ellipsis; font-size:26px;">@Model[i].FoodItem </div>
+                    </div>
+                    <div class="col-md-2 " style="font-size: 22px;">
+                        Table <h3 class="rounded-circle p-1 w-auto text-center border " id="CircleWidth" style="color:#00bd8e; ">@Model[i].TableNum</h3>
+                    </div>
+                    <div class="col-md-3 " style="font-size: 20px;">
+                        Customer: @Model[i].Customer
+                    </div>
+
+                </div>
+                <hr class="my-4">
+                <div class="row mb-3 pl-4 pr-2">
+
+                    <div class=" col-12 col-md-8" style="word-wrap:break-word;">
+                        <p class="text-secondary">Note:</p> @Model[i].Note
+                    </div>
+                    <div class="col-md-2" style="font-size: 22px;">
+                        Qty: @Model[i].Quantity
+                    </div>
+                    <div class=" mb-2 col-md-2" style="color:#00bd8e;">
+                        @Model[i].EmployeeName
+                    </div>
+                    <button class="btn btn-lg ml-4" type="submit" name="doneButton" value="@Model[i].Id" style="background: linear-gradient(45deg, #00ff90 0%,#00bd8e 100%); color: white;">Done</button>
+                </div>
+            </div>
+        </form>
+    }
+
+</div>
+

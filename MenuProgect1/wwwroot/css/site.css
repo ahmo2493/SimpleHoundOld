@@ -1,0 +1,284 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+
+
+/*My add-on*/
+.scrollTab {
+    height: 450px;
+    overflow-y: scroll;
+}
+
+.scrolltab-dropdown {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+@media (min-width: 450px) {
+    .scrolltab-dropdown {
+        height: 200px;
+        overflow-y: scroll;
+    }
+}
+
+@media (min-width: 732px) {
+    .scrolltab-dropdown {
+        height: 400px;
+        overflow-y: scroll;
+    }
+}
+
+.XInline{
+    
+}
+.indexC {
+    background-image: linear-gradient(to right top, #d04556, #d54764, #d94a73, #db4f81, #dc5490);
+}
+
+/*GreenLogin button color*/
+.ColorMix {
+    background-image: linear-gradient(to bottom, #00ff90, #01fd90, #03fb90, #04f98f, #06f78f, #01f391, #00f093, #00ec95, #00e699, #00e19d, #00dba0, #08d5a2);
+}
+/*MenuFoodEntry top img*/
+.FoodColor {
+    background-image: url("../Images/MenuFoodGreenSlash.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+.GreenLogin-img {
+    /* The image used */
+    background-image: url("../Images/OasisCircle1.svg");
+    min-height: 390px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    max-width: 390px;
+}
+@media (max-width: 770px) {
+    .GreenLogin-img {
+        background-image: url("../Images/OasisCircle1.svg");
+        min-height: 360px;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        max-width: 360px;
+    }
+    }
+.GreenInputBox {
+    position: absolute;
+    top: 170px;
+    left: 90px;
+    max-width: 200px;
+}
+
+@media (max-width: 770px) {
+    .GreenInputBox {
+        position: absolute;
+        top: 160px;
+        left: 87px;
+        max-width: 200px;
+    }
+}
+
+/*----------------------------------------------------------------------------------*/
+.LeftGreen-img {
+    /* The image used */
+    background-image: url("../Images/DashboardGreenSlash.png");
+    min-height: 300px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    max-width: 100%;
+}
+/*-------------------------------- login background Image --------------------------*/
+
+.LoginBackground-img {
+    /* The image used */
+    background-image: url("../Images/LoginBackgroundNew.png");
+    min-height: 300px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    max-width: 100%;
+}
+
+
+.WelcomeMargin{
+    margin-left: 200px;
+}
+@media (max-width: 850px){
+    .WelcomeMargin {
+        margin-left: 0;
+    }
+}
+
+.WaiterTableEntry-img {
+    /* The image used */
+    background-image: url("../Images/WaiterTableEntry3.png");
+    min-height: 390px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    max-width: 390px;
+}
+#rcorners2 {
+    border-radius: 25px;   
+    padding: 20px;  
+}
+
+/*CircleWidth is for waiterTableEntry table circle top right*/
+#CircleWidth{
+    max-width: 45px;
+}
+@media (max-width: 770px){
+    #CircleWidth {
+        max-width: 38px;
+    }
+}
+
+/*Index Page Phone Position*/
+.PhonePosition {
+    position: relative;
+    left: 50%;  
+    max-width: 380px;
+    margin-top: -105px;
+}
+
+@media (max-width: 750px) {
+    .PhonePosition{
+ position:relative;
+ left: 10%;
+ max-width: 250px;
+ margin-top: 30px;
+    } 
+    }
+
+
+
+/*Index Page Strawberry*/
+.StrawberryPosition {
+    padding-top: 30px;
+    max-width: 220px;
+}
+
+@media (max-width: 850px) {
+    .StrawberryPosition {
+        padding-top: 30px;
+        max-width: 180px;
+    }
+}
+/*---------------------------*/
+.KitcheOrderIndex {
+   
+    max-width: 520px;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 850px) {
+    .KitcheOrderIndex {
+        padding-top: 30px;
+        max-width: 100%;
+    }
+}
+
+
+    a .navbar-brand {
+        white-space: normal;
+        text-align: center;
+        word-break: break-all;
+    }
+
+    /* Sticky footer styles
+-------------------------------------------------- */
+    html {
+        font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+        html {
+            font-size: 16px;
+        }
+    }
+
+    .border-top {
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .box-shadow {
+        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    }
+
+    button.accept-policy {
+        font-size: 1rem;
+        line-height: inherit;
+    }
+
+    /*removes light blue outline on buttons when clicked*/
+    .btn:focus, .btn:active {
+        outline: none !important;
+        box-shadow: none;
+    }
+
+
+
+
+    /*-----------Bold index page font link ------------------*/
+
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+
+
+
+    /* Sticky footer styles
+-------------------------------------------------- */
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        /* Margin bottom by footer height */
+        margin-bottom: 60px;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        white-space: nowrap;
+        /* Set the fixed height of the footer here */
+        height: 60px;
+        line-height: 60px; /* Vertically center the text there */
+    }
+
+
+
+
+
+
+
+
+
+
+
