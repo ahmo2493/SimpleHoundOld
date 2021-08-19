@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewData["Title"] = "WaiterFoodEntry";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+@model SimpleHound.MyLists.FoodLists
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="row mx-auto text-center" style="background-color: #00ff90; max-width:850px; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+    <div class="col-8">
+        <form method="post">
+            <button name="backButton" value="pressed" class="btn btn-lg text-white float-left" style="background-color: #00ff90; font-size:23px;">&laquo; Back</button>
+        </form>
+    </div>
+
+    <div class="col-4 mx-auto">
+        <h1 class="display-4 pt-2 text-center" style="font-size: 25px;">Customer</h1>
+        <h3 class="rounded-circle bg-white p-1 w-auto mx-auto " id="CircleWidth" style="color: #00bd8e;">@ViewData["customerNumber"]</h3>
+    </div>
+
+</div>
+
+@*------------------- food categories are selected -----------------------*@
+<div class="mx-auto p-3 pt-5 mb-4" style="max-width: 370px;">
+    <h4 class="text-center" style="font-family: 'Roboto', sans-serif;">Categories</h4>
+
+    <form method="post">
+
+        <select class="custom-select" data-style="btn-success" name="categorySelected" onchange="this.form.submit()">
+            <option></option>
+            @for (int i = 0; i < Model.CategoryList.Count; i++)
+            {
+
+                <option class="dropdown-item text-center " title="dropdown" style="font-size: 21px;">@Model.CategoryList[i]</option>
+
+            }
+        </select>
+
+    </form>
+</div>
+
+
+
+@*----------------- food Items are selected ----------------------*@
+<div class="mx-auto bg-light pt-3 pb-4 p-2 shadow" style="max-width: 850px; border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+
+    <div class="mx-auto p-3  pb-5" style="max-width: 370px;">
+        <h3 class="text-center" style="font-family: 'Roboto', sans-serif;">@ViewData["seclectedCategory"]</h3>
+
+        <form method="post">
+
+            <select class="custom-select" data-style="btn-success" name="foodItemSelected" onchange="this.form.submit()">
+                <option></option>
+                @for (int i = 0; i < Model.WaiterItemEntryList.Count; i++)
+                {
+
+                    <option class="dropdown-item text-center " title="dropdown" style="font-size: 21px;"> @Model.WaiterItemEntryList[i].FoodItem </option>
+                }
+            </select>
+
+        </form>
+    </div>
+
+
+
+    @*----------------- Food Items are added ----------------------*@
+
+
+
+
+
+    @for (int i = 0; i < Model.CustomerFoodList.Count; i++)
+    {
+        <div class="mx-auto border bg-white p-2 mb-4" style="max-width: 500px; border-radius: 25px; border: #00ff90;">
+            <form method="post">
+                <p class="bg-light " style="white-space:nowrap; overflow: hidden; text-overflow:ellipsis; font-size: 22px; border-radius: 25px;"><button type="submit" name="deleteFoodItem" value="@i" class="rounded-circle btn btn-sm ml-3 mr-3 mb-1 ">X</button>  @Model.CustomerFoodList[i].FoodItem </p>
+
+
+                <div>
+                    <div class=" float-left" style="margin-left: 20%; font-weight:bold; font-size: 16px;">$@Model.CustomerFoodList[i].Price</div>
+
+                    <div style="margin-left: 60%;">
+
+                        <button type="submit" name="qty" value="@i-up" class="btn btn-sm bg-white fa fa-chevron-circle-up" style="font-size: 30px; color:darkgray;"></button>
+                        @*qty num -->*@ <input class="text-center" placeholder="Qty" name="displayedQty" value="@Model.CustomerFoodList[i].Quantity" style="max-width: 38px;" />
+                        <button type="submit" name="qty" value="@i-down" class="btn btn-sm bg-white fa fa-chevron-circle-down" style="font-size: 30px; color:darkgray"></button>
+
+                    </div>
+                    @*--------------------- dropdown note will not work if id is not == string --------------------*@
+
+
+                    @{
+                        string dropNote = $"dropNote{i}";
+                    }
+
+                    @*NoteButton -->*@  <button class="btn text-white" name="noteButton" type="button" data-toggle="collapse" data-target="#@dropNote" aria-expanded="false" aria-controls="@dropNote" style="background-color: darkgray; border-radius: 25px;">Note</button>
+                </div>
+
+                @Model.CustomerFoodList[i].Note
+                <div class="collapse" id="@dropNote">
+
+                    <textarea class="form-control" name="noteTextBox" aria-describedby="basic-addon1" id="comment" rows="3"> @Model.CustomerFoodList[i].Note</textarea>
+
+                    <button class="btn mb-3" type="submit" name="noteAdd" value="@i" style="background: linear-gradient(45deg, #00ff90 0%,#00bd8e 100%); color: white;">Add Note</button>
+
+
+                </div>
+
+            </form>
+        </div>
+    }
+
+
+
+</div>
+
+
+
+
