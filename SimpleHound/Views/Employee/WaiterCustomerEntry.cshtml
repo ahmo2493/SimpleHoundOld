@@ -2,43 +2,45 @@
     ViewData["Title"] = "WaiterCustomerEntry";
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
+@model List<SimpleHound.SQLDatabase.CustomerCount>
 @ViewData["name"]
-<div class="text-center bg-light mx-auto" id="rcorners2" style="max-width:850px">
-    <div class="row">
-
-        <div class="col-6">
-            <a asp-controller="Employee" asp-action="WaiterTableEntry" asp-route-id="@ViewData["encryptedpassword"]" class="btn btn-lg bg-light float-left" style="color: #00D377; font-size:23px;">&laquo; Back</a>
-        </div>
-
-        <div class="col-6 mx-auto text-center" style="position: relative; left: 10%;">
-            <h1 class="display-4" style="font-size: 28px;">Table</h1>
-            <h3 class="rounded-circle bg-secondary text-white p-1 w-auto mx-auto mb-5" id="CircleWidth">@ViewData["table"]</h3>
-        </div>
-    </div>
-
-
-
-    @for (int i = 1; i <= Model.Count; i++)
-    {
-        <form method="post">
-            <div>
-                <button type="submit" name="DeleteItem" id="DeleteItem" value="@i" class="rounded btn btn-sm border bg-light mb-2 rounded-circle mr-2">X</button><button class="btn btn-lg mb-2" name="customerButton" value="@i" style="border-radius: 25px; background-color: #00ff90;">Customer @i</button>
-            </div>
-        </form>
-    }
-
-    <form method="post">
-        <button type="submit" name="addCustomer" value="waiter" class="btn btn-lg text-center m-5 mx-auto bg-light" style="border-color: #00D377;">+Add Customer</button>
-
-        <hr class="my-4">
+    <div class="text-center bg-light mx-auto" id="rcorners2" style="max-width:850px">
         <div class="row">
-            <div class="col-7"></div>
 
-            <div class="col-5">
-                <button type="submit" name="submitOrder" value="submit" class="btn btn-lg" style="background: linear-gradient(45deg, #00ff90 0%,#00bd8e 100%); color: white;">Submit Order</button>
+            <div class="col-6">
+                <a asp-controller="Employee" asp-action="WaiterTableEntry" asp-route-id="@ViewData["encryptedpassword"]" class="btn btn-lg bg-light float-left" style="color: #00D377; font-size:23px;">&laquo; Back</a>
+            </div>
+
+            <div class="col-6 mx-auto text-center" style="position: relative; left: 10%;">
+                <h1 class="display-4" style="font-size: 28px;">Table</h1>
+                <h3 class="rounded-circle bg-secondary text-white p-1 w-auto mx-auto mb-5" id="CircleWidth">@ViewData["table"]</h3>
             </div>
         </div>
 
-    </form>
+        @foreach (var item in Model)
+        {
+            for (int i = 1; i <= item.Customer; i++)
+            {
+                <form method="post">
+                    <div>
+                        <button type="submit" name="DeleteItem" id="DeleteItem" value="@i" class="rounded btn btn-sm border bg-light mb-2 rounded-circle mr-2">X</button><button class="btn btn-lg mb-2" name="customerButton" value="@i" style="border-radius: 25px; background-color: #00ff90;">Customer @i</button>
+                    </div>
+                </form>
+            }
+        }
 
-</div>
+        <form method="post">
+            <button type="submit" name="addCustomer" value="waiter" class="btn btn-lg text-center m-5 mx-auto bg-light" style="border-color: #00D377;">+Add Customer</button>
+
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-7"></div>
+
+                <div class="col-5">
+                    <button type="submit" name="submitOrder" value="submit" class="btn btn-lg" style="background: linear-gradient(45deg, #00ff90 0%,#00bd8e 100%); color: white;">Submit Order</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>

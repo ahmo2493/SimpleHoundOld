@@ -6,6 +6,15 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20190221030116_Update-Database -Context MenuDBContext.cs" />
+    <Compile Remove="Migrations\20190221030116_Update-Database -Context MenuDBContext.Designer.cs" />
+    <Compile Remove="Migrations\20210825224351_CustomerCountInfo.cs" />
+    <Compile Remove="Migrations\20210825224351_CustomerCountInfo.Designer.cs" />
+    <Compile Remove="Migrations\20210825232849_FirstM.cs" />
+    <Compile Remove="Migrations\20210825232849_FirstM.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

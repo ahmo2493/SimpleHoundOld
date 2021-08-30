@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +13,7 @@ namespace SimpleHound.SQLDatabase
         public DbSet<MenuEmployees> MenuEmployees { get; set; }
         public DbSet<MenuCustomerOrder> MenuCustomerOrder { get; set; }
         public DbSet<MenuKitchenOrder> MenuKitchen { get; set; }
+        public DbSet<CustomerCount> CustomerCount { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -108,24 +108,6 @@ namespace SimpleHound.Logic
             }
         }
 
-        //WaiterTableEntry 
-        public static void UpdateTableNumber(IQueryable <MenuCustomerOrder> foodItems, int myTable)
-        {
-            foreach (var item in foodItems)
-            {
-                item.TableNum = myTable;
-            }
-        }
-
-        //WaiterCustomerEntry
-        public static List<MenuCustomerOrder> AddToCustomerFixedList(IQueryable <MenuCustomerOrder> customerCount, List <MenuCustomerOrder> CustomerFixedList)
-        {
-            foreach (var item in customerCount)
-            {
-                CustomerFixedList.Add(new MenuCustomerOrder() { Customer = item.Customer, Password = item.Password });
-            }
-            return CustomerFixedList;
-        }
 
        
     }

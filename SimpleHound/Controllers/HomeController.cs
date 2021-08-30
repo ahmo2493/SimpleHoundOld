@@ -23,7 +23,23 @@ namespace SimpleHound.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            //If this user has menu items in databse, direct user to Dashboard page
+            //All new users are sent to MenuTableEntry page
+            using (var db = new MenuDBContext())
+            {
+                var containsUser = db.MenuEntry.Where(x => x.UserName == User.Identity.Name).ToList();
+
+                if (containsUser.Count > 0)
+                {
+                    return RedirectToAction("HomeDashboard", "Dashboard");
+                }
+                if(User.Identity.Name != null)
+                {
+                    return RedirectToAction("MenuTableEntry", "Home");
+                }
+
+                return View();
+            }
         }
 
         //------------------------------------------ Table Entry --------------------------------------
