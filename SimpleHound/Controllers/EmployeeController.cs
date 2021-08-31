@@ -13,6 +13,8 @@ namespace SimpleHound.Controllers
 
     public class EmployeeController : Controller
     {
+        public static List<int> TotalCountHelper = new List<int>();
+
         //Customer list is for customer entry only (customer 1, 2, 3...)
         public static List<CustomerCount> CustomerList = new List<CustomerCount>();
 
@@ -230,17 +232,17 @@ namespace SimpleHound.Controllers
                 {
                     var customerQuery = db.CustomerCount.Where(x => x.Password == decodedPassword);
 
-                    foreach (var item in customerQuery)
+                    if(customerQuery.Count() == 1)
                     {
-                        if (item.Customer == 1)
-                        {
-                            db.CustomerCount.RemoveRange(db.CustomerCount.Where(x => x.Password == decodedPassword));
-                        }
-                        else
-                        {                                           
-                            item.Customer--;
-                        }
+                        TotalCountHelper.Clear();
+                        db.CustomerCount.RemoveRange(db.CustomerCount.Where(x => x.Password == decodedPassword));
                     }
+                    else
+                    {
+                        int.TryParse(DeleteItem, out int deleteCustomer);
+                        db.CustomerCount.RemoveRange(db.CustomerCount.Where(x => x.Password == decodedPassword && x.Customer == deleteCustomer));
+                    }
+                   
 
                     db.MenuCustomerOrder.RemoveRange(db.MenuCustomerOrder.Where(x => x.Customer == DeleteItem && x.Password == decodedPassword));
                     db.SaveChanges();
@@ -284,6 +286,7 @@ namespace SimpleHound.Controllers
                 }
                 CustomerOrder.SendTokitchenList.Clear();
                 CustomerList.Clear();
+                TotalCountHelper.Clear();
 
                 return RedirectToAction("WaiterTableEntry", new { id = encrypted, OrderSentMessage = ViewData["OrderSentMessage"] });
 
@@ -297,17 +300,17 @@ namespace SimpleHound.Controllers
 
                 using (var db = new MenuDBContext())
                 {
-                    bool CustomerExists = false;
                     var customerQuery = db.CustomerCount.Where(x => x.Password == decodedPassword);
 
-                    foreach (var item in customerQuery)
+                    if(customerQuery.Count() == 0)
                     {
-                        item.Customer++;                       
-                        CustomerExists = true;               
+                        TotalCountHelper.Add(1);
+                        db.CustomerCount.AddRange(new CustomerCount() { Customer = TotalCountHelper.Count(), Password = decodedPassword });                        
                     }
-                    if (CustomerExists == false)
+                    else
                     {
-                        db.CustomerCount.AddRange(new CustomerCount() { Customer = 1, Password = decodedPassword });
+                        TotalCountHelper.Add(1);
+                        db.CustomerCount.AddRange(new CustomerCount() { Customer = TotalCountHelper.Count(), Password = decodedPassword });
                     }
 
                     db.SaveChanges();
@@ -447,17 +450,12 @@ namespace SimpleHound.Controllers
                                              a.Categories,
                                              a.Items,
                                              a.Prices,
-                                         });
+                                         }).Where(x => x.Categories == categorySelected && x.Password == decodedPassword);
+
                         foreach (var item in joinQuery)
                         {
-                            if (categorySelected == item.Categories && item.Password == decodedPassword)
-                            {
-
-                                CustomerOrder.WaiterItemEntryList.Add(new MenuCustomerOrder { UserName = item.UserName, EmployeeName = item.Name, Customer = customerNum, TableNum = myTable, Category = categorySelected, FoodItem = item.Items, Price = item.Prices });
-                                ViewData["seclectedCategory"] = item.Categories;
-
-                            }
-
+                            CustomerOrder.WaiterItemEntryList.Add(new MenuCustomerOrder { UserName = item.UserName, EmployeeName = item.Name, Customer = customerNum, TableNum = myTable, Category = categorySelected, FoodItem = item.Items, Price = item.Prices });
+                            ViewData["seclectedCategory"] = item.Categories;
                         }
 
                     }
@@ -467,7 +465,7 @@ namespace SimpleHound.Controllers
                 {
                     foreach (var Fooditem in CustomerOrder.WaiterItemEntryList)
                     {
-                        if (foodItemSelected == Fooditem.FoodItem.TrimEnd())
+                        if (foodItemSelected.Replace(" ", "") == Fooditem.FoodItem.Replace(" ", ""))
                         {
                             CustomerOrder.CustomerFoodList.Add(new MenuCustomerOrder { UserName = Fooditem.UserName, EmployeeName = Fooditem.EmployeeName, Customer = customerNum, TableNum = myTable, Category = Fooditem.Category, FoodItem = Fooditem.FoodItem, Price = Fooditem.Price, Note = "", Quantity = 1, Password = decodedPassword });
                             ViewData["seclectedCategory"] = Fooditem.Category;
